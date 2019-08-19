@@ -31,6 +31,14 @@ python-versions = "*"
 version = "3.0.4"
 
 [[package]]
+category = "main"
+description = "Composable command line interface toolkit"
+name = "click"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "7.0"
+
+[[package]]
 category = "dev"
 description = "Cross-platform colored terminal text."
 marker = "sys_platform == \"win32\""
@@ -40,12 +48,36 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "0.4.1"
 
 [[package]]
+category = "main"
+description = "Better living through Python with decorators"
+name = "decorator"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "4.4.0"
+
+[[package]]
+category = "main"
+description = "Docutils -- Python Documentation Utilities"
+name = "docutils"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "0.15.2"
+
+[[package]]
 category = "dev"
 description = "Discover and load entry points from installed packages."
 name = "entrypoints"
 optional = false
 python-versions = ">=2.7"
 version = "0.3"
+
+[[package]]
+category = "main"
+description = "Python 3.4 Enum backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.4"
+name = "enum34"
+optional = false
+python-versions = "*"
+version = "1.1.6"
 
 [[package]]
 category = "dev"
@@ -60,6 +92,29 @@ entrypoints = ">=0.3.0,<0.4.0"
 mccabe = ">=0.6.0,<0.7.0"
 pycodestyle = ">=2.5.0,<2.6.0"
 pyflakes = ">=2.1.0,<2.2.0"
+
+[[package]]
+category = "main"
+description = "Clean single-source support for Python 3 and 2"
+name = "future"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "0.17.1"
+
+[[package]]
+category = "main"
+description = "Geocoder is a simple and consistent geocoding library."
+name = "geocoder"
+optional = false
+python-versions = "*"
+version = "1.38.1"
+
+[package.dependencies]
+click = "*"
+future = "*"
+ratelim = "*"
+requests = "*"
+six = "*"
 
 [[package]]
 category = "main"
@@ -79,6 +134,28 @@ version = "0.19"
 
 [package.dependencies]
 zipp = ">=0.5"
+
+[[package]]
+category = "main"
+description = "Platform-independent file locking module"
+name = "lockfile"
+optional = false
+python-versions = "*"
+version = "0.12.2"
+
+[[package]]
+category = "main"
+description = "Workflow mgmgt + task scheduling + dependency resolution"
+name = "luigi"
+optional = false
+python-versions = "*"
+version = "2.8.8"
+
+[package.dependencies]
+enum34 = ">1.1.0"
+python-daemon = "<2.2.0"
+python-dateutil = ">=2.7.5,<3"
+tornado = ">=4.0,<5"
 
 [[package]]
 category = "dev"
@@ -172,6 +249,19 @@ six = ">=1.10.0"
 
 [[package]]
 category = "main"
+description = "Library to implement a well-behaved Unix daemon process."
+name = "python-daemon"
+optional = false
+python-versions = "*"
+version = "2.1.2"
+
+[package.dependencies]
+docutils = "*"
+lockfile = ">=0.10"
+setuptools = "*"
+
+[[package]]
+category = "main"
 description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
 optional = false
@@ -191,6 +281,17 @@ version = "2019.2"
 
 [[package]]
 category = "main"
+description = "Makes it easy to respect rate limits."
+name = "ratelim"
+optional = false
+python-versions = "*"
+version = "0.1.6"
+
+[package.dependencies]
+decorator = "*"
+
+[[package]]
+category = "main"
 description = "Python HTTP for Humans."
 name = "requests"
 optional = false
@@ -205,11 +306,27 @@ urllib3 = ">=1.21.1,<1.25.0 || >1.25.0,<1.25.1 || >1.25.1,<1.26"
 
 [[package]]
 category = "main"
+description = "Geometric objects, predicates, and operations"
+name = "shapely"
+optional = false
+python-versions = "*"
+version = "1.6.4.post2"
+
+[[package]]
+category = "main"
 description = "Python 2 and 3 compatibility utilities"
 name = "six"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 version = "1.12.0"
+
+[[package]]
+category = "main"
+description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
+name = "tornado"
+optional = false
+python-versions = "*"
+version = "4.5.3"
 
 [[package]]
 category = "main"
@@ -228,7 +345,7 @@ python-versions = ">=2.7"
 version = "0.5.2"
 
 [metadata]
-content-hash = "08daa13ca1d3ee10a19dc7603ab81b5a01277f43fb6cabd8d3701497517cb3a2"
+content-hash = "5d9df73d3ddc89f2e7761f1a9c5424d92bb151a7c65c153ca3227a6bf50a8f24"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -236,11 +353,19 @@ atomicwrites = ["03472c30eb2c5d1ba9227e4c2ca66ab8287fbfbbda3888aa93dc2e28fc6811b
 attrs = ["69c0dbf2ed392de1cb5ec704444b08a5ef81680a61cb899dc08127123af36a79", "f0b870f674851ecbfbbbd364d6b5cbdff9dcedbc7f3f5e18a6891057f21fe399"]
 certifi = ["046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939", "945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
+click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
 colorama = ["05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d", "f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"]
+decorator = ["86156361c50488b84a3f148056ea716ca587df2f0de1d34750d35c21312725de", "f069f3a01830ca754ba5258fde2278454a0b5b79e0d7f5c13b3b97e57d4acff6"]
+docutils = ["6c4f696463b79f1fb8ba0c594b63840ebd41f059e92b31957c46b74a4599b6d0", "9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827", "a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"]
 entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19", "c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"]
+enum34 = ["2d81cbbe0e73112bdfe6ef8576f2238f2ba27dd0d55752a776c41d38b7da2850", "644837f692e5f550741432dd3f223bbb9852018674981b1664e5dc339387588a", "6bd0f6ad48ec2aa117d3d141940d484deccda84d4fcd884f5c3d93c23ecd8c79", "8ad8c4783bf61ded74527bffb48ed9b54166685e4230386a9ed9b1279e2df5b1"]
 flake8 = ["19241c1cbc971b9962473e4438a2ca19749a7dd002dd1a946eaba171b4114548", "8e9dfa3cecb2400b3738a42c54c3043e821682b9c840b0448c0503f781130696"]
+future = ["67045236dcfd6816dc439556d009594abf643e5eb48992e36beac09c2ca659b8"]
+geocoder = ["a733e1dfbce3f4e1a526cac03aadcedb8ed1239cf55bd7f3a23c60075121a834", "c9925374c961577d0aee403b09e6f8ea1971d913f011f00ca70c76beaf7a77e7"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
 importlib-metadata = ["23d3d873e008a513952355379d93cbcab874c58f4f034ff657c7a87422fa64e8", "80d2de76188eabfbfcf27e6a37342c2827801e59c4cc14b0371c56fed43820e3"]
+lockfile = ["6aed02de03cba24efabcd600b30540140634fc06cfa603822d508d5361e9f799", "6c3cb24f344923d30b2785d5ad75182c8ea7ac1b6171b08657258ec7429d50fa"]
+luigi = ["91fd07f0e1f205422d85b12963c634c31f3f9dbf0235f4372e1cda92448f40df"]
 mccabe = ["ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42", "dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"]
 more-itertools = ["409cd48d4db7052af495b09dec721011634af3753ae1ef92d2b32f73a745f832", "92b8c4b06dac4f0611c0729b2f2ede52b2e1bac1ab48f089c7ddc12e26bb60c4"]
 numpy = ["03e311b0a4c9f5755da7d52161280c6a78406c7be5c5cc7facfbcebb641efb7e", "0cdd229a53d2720d21175012ab0599665f8c9588b3b8ffa6095dd7b90f0691dd", "312bb18e95218bedc3563f26fcc9c1c6bfaaf9d453d15942c0839acdd7e4c473", "464b1c48baf49e8505b1bb754c47a013d2c305c5b14269b5c85ea0625b6a988a", "5adfde7bd3ee4864536e230bcab1c673f866736698724d5d28c11a4d63672658", "7724e9e31ee72389d522b88c0d4201f24edc34277999701ccd4a5392e7d8af61", "8d36f7c53ae741e23f54793ffefb2912340b800476eb0a831c6eb602e204c5c4", "910d2272403c2ea8a52d9159827dc9f7c27fb4b263749dca884e2e4a8af3b302", "951fefe2fb73f84c620bec4e001e80a80ddaa1b84dce244ded7f1e0cbe0ed34a", "9588c6b4157f493edeb9378788dcd02cb9e6a6aeaa518b511a1c79d06cbd8094", "9ce8300950f2f1d29d0e49c28ebfff0d2f1e2a7444830fbb0b913c7c08f31511", "be39cca66cc6806652da97103605c7b65ee4442c638f04ff064a7efd9a81d50a", "c3ab2d835b95ccb59d11dfcd56eb0480daea57cdf95d686d22eff35584bc4554", "eb0fc4a492cb896346c9e2c7a22eae3e766d407df3eb20f4ce027f23f76e4c54", "ec0c56eae6cee6299f41e780a0280318a93db519bbb2906103c43f3e2be1206c", "f4e4612de60a4f1c4d06c8c2857cdcb2b8b5289189a12053f37d3f41f06c60d0"]
@@ -250,9 +375,13 @@ py = ["64f65755aee5b381cea27766a3a147c3f15b9b6b9ac88676de66ba2ae36793fa", "dc639
 pycodestyle = ["95a2219d12372f05704562a14ec30bc76b05a5b297b21a5dfe3f6fac3491ae56", "e40a936c9a450ad81df37f549d676d127b1b66000a6c500caa2b085bc0ca976c"]
 pyflakes = ["17dbeb2e3f4d772725c777fabc446d5634d1038f234e77343108ce445ea69ce0", "d976835886f8c5b31d47970ed689944a0262b5f3afa00a5a7b4dc81e5449f8a2"]
 pytest = ["3f193df1cfe1d1609d4c583838bea3d532b18d6160fd3f55c9447fdca30848ec", "e246cf173c01169b9617fc07264b7b1316e78d7a650055235d6d897bc80d9660"]
+python-daemon = ["261c859be5c12ae7d4286dc6951e87e9e1a70a882a8b41fd926efc1ec4214f73", "53da55aec3bb67b576e13a8091a2181f99b395c2eec32a5a0d91d347a5c420a7"]
 python-dateutil = ["7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb", "c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e"]
 pytz = ["26c0b32e437e54a18161324a2fca3c4b9846b74a8dccddd843113109e1116b32", "c894d57500a4cd2d5c71114aaab77dbab5eabd9022308ce5ac9bb93a60a6f0c7"]
+ratelim = ["826d32177e11f9a12831901c9fda6679fd5bbea3605910820167088f5acbb11d", "e1a7dd39e6b552b7cc7f52169cd66cdb826a1a30198e355d7016012987c9ad08"]
 requests = ["11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4", "9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"]
+shapely = ["0378964902f89b8dbc332e5bdfa08e0bc2f7ab39fecaeb17fbb2a7699a44fe71", "34e7c6f41fb27906ccdf2514ee44a5774b90b39a256b6511a6a57d11ffe64999", "3ca69d4b12e2b05b549465822744b6a3a1095d8488cc27b2728a06d3c07d0eee", "3e9388f29bd81fcd4fa5c35125e1fbd4975ee36971a87a90c093f032d0e9de24", "3ef28e3f20a1c37f5b99ea8cf8dcb58e2f1a8762d65ed2d21fd92bf1d4811182", "523c94403047eb6cacd7fc1863ebef06e26c04d8a4e7f8f182d49cd206fe787e", "5d22a1a705c2f70f61ccadc696e33d922c1a92e00df8e1d58a6ade14dd7e3b4f", "714b6680215554731389a1bbdae4cec61741aa4726921fa2b2b96a6f578a2534", "7dfe1528650c3f0dc82f41a74cf4f72018288db9bfb75dcd08f6f04233ec7e78", "ba58b21b9cf3c33725f7f530febff9ed6a6846f9d0bf8a120fc74683ff919f89", "c4b87bb61fc3de59fc1f85e71a79b0c709dc68364d9584473697aad4aa13240f", "ebb4d2bee7fac3f6c891fcdafaa17f72ab9c6480f6d00de0b2dc9a5137dfe342"]
 six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
+tornado = ["5ef073ac6180038ccf99411fe05ae9aafb675952a2c8db60592d5daf8401f803", "6d14e47eab0e15799cf3cdcc86b0b98279da68522caace2bd7ce644287685f0a", "92b7ca81e18ba9ec3031a7ee73d4577ac21d41a0c9b775a9182f43301c3b5f8e", "ab587996fe6fb9ce65abfda440f9b61e4f9f2cf921967723540679176915e4c3", "b36298e9f63f18cad97378db2222c0e0ca6a55f6304e605515e05a25483ed51a"]
 urllib3 = ["b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1", "dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"]
 zipp = ["4970c3758f4e89a7857a973b1e2a5d75bcdc47794442f2e2dd4fe8e0466e809a", "8a5712cfd3bb4248015eb3b0b3c54a5f6ee3f2425963ef2a0125b8bc40aafaec"]

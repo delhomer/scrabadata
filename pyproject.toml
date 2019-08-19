@@ -10,6 +10,9 @@ authors = ["Raphaël Delhome <raphael.delhome@club-internet.fr>"]
 python = "^3.6"
 requests = "^2.22"
 pandas = "^0.25.0"
+geocoder = "^1.38"
+shapely = "^1.6"
+luigi = "^2.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
