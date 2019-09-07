@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "id": "B14", "club": "Albi", "address": "7 rue des Muettes 81000 Albi" }, "geometry": { "type": "Point", "coordinates": [ 43.9262291, 2.1462822 ] } },
+{ "type": "Feature", "properties": { "id": "B34", "club": "Arbas", "address": "place du Biasc 31160 Arbas" }, "geometry": { "type": "Point", "coordinates": [ 42.9960938, 0.908402 ] } },
+{ "type": "Feature", "properties": { "id": "B01", "club": "Auch", "address": "63 chemin du plan Embats 32000 Auch" }, "geometry": { "type": "Point", "coordinates": [ 43.6384426, 0.521527 ] } },
+{ "type": "Feature", "properties": { "id": "B40", "club": "Blagnac", "address": "5 impasse des Alouettes 31700 Blagnac" }, "geometry": { "type": "Point", "coordinates": [ 43.6468089, 1.3870652 ] } },
+{ "type": "Feature", "properties": { "id": "B18", "club": "Bretenoux", "address": "22 Avenue de la Libération 46130 Bretenoux" }, "geometry": { "type": "Point", "coordinates": [ 44.915678, 1.8385351 ] } },
+{ "type": "Feature", "properties": { "id": "B32", "club": "Castanet-Tolosan", "address": "rue des péniches 31320 Castanet-Tolosan." }, "geometry": { "type": "Point", "coordinates": [ 43.5084963, 1.5157553 ] } },
+{ "type": "Feature", "properties": { "id": "B10", "club": "Castres", "address": "39 rue Émile Zola 81100 Castres" }, "geometry": { "type": "Point", "coordinates": [ 43.6054961, 2.2406203 ] } },
+{ "type": "Feature", "properties": { "id": "B02", "club": "Caussade", "address": "Rue des Récollets 82300 Caussade" }, "geometry": { "type": "Point", "coordinates": [ 44.1630002, 1.5382332 ] } },
+{ "type": "Feature", "properties": { "id": "B04", "club": "Conques", "address": "Le Bourg 12320 Conques" }, "geometry": { "type": "Point", "coordinates": [ 44.5923335, 2.42216998397436 ] } },
+{ "type": "Feature", "properties": { "id": "B25", "club": "Cransac-les-Thermes", "address": "Rue du Général Louis Artous 12110 Cransac" }, "geometry": { "type": "Point", "coordinates": [ 44.5252443, 2.2814525 ] } }
+]
+}
