@@ -11,7 +11,7 @@ from luigi.format import MixedUnicodeBytes
 import pandas as pd
 import requests
 
-from scrabadata import config
+from scrabadata import config, download
 
 DATADIR = Path(config["main"]["datadir"])
 
@@ -134,27 +134,43 @@ class MergeClubs(luigi.Task):
     """
     """
 
-    def requires(self):
-        club_dir = DATADIR / "clubs"
-        required = {}
-        areas = pd.read_csv(DATADIR / "areas.csv")
-        for area_id in areas["id"]:
-            required[area_id] = DownloadClubs(area_id)
-        return required
+    @property
+    def input_dir(self):
+        return DATADIR / "clubs" / "located"
 
     def output(self):
-        output_path = DATADIR / "clubs.csv"
+        output_path = DATADIR / "clubs" / "located_clubs.csv"
         return luigi.LocalTarget(output_path)
 
     def run(self):
         df_clubs = pd.DataFrame({"club": [], "address": []})
-        for area_id, area_input in self.input().items():
-            area_clubs = pd.read_csv(area_input.path)
+        for area_input in self.input_dir.iterdir():
+            area_clubs = pd.read_csv(area_input)
             if "area" in area_clubs.columns:
                 area_clubs.rename({"area": "club"}, axis=1, inplace=True)
             area_clubs.set_index("id", inplace=True)
             df_clubs = pd.concat([df_clubs, area_clubs])
         df_clubs.to_csv(self.output().path, index_label="id")
+
+
+class GeocodeClubs(luigi.Task):
+    """
+    """
+
+    def requires(self):
+        return MergeClubs()
+
+    def output(self):
+        output_path = DATADIR / "clubs" / "located_clubs.csv"
+        return luigi.LocalTarget(output_path)
+
+    def run(self):
+        clubs = pd.read_csv(self.input())
+        clubs.loc[:,"geom"] = clubs["address"].apply(
+            lambda x: download.geocode(x)
+        )
+        gdf.to_file(self.output().path, driver="GeoJSON")
+        clubs.to_csv(self.output().path, index_label="id")
 
 
 class CreateSchema(PostgresQuery):
