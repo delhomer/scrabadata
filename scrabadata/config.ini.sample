@@ -1,0 +1,15 @@
+[main]
+datadir = ./data
+
+[database]
+dbname = scrabadata
+user = # your-user
+host = localhost
+port = 5432
+
+[url]
+ranking = https://www.ffsc.fr/classements.exporter.php?class=nat&date={date}
+french_areas =
+french_departments = 
+area = https://www.ffsc.fr/clubs.php
+club = https://www.ffsc.fr/clubs.php?comite={region}
