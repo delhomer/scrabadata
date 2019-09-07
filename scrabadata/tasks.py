@@ -2,17 +2,18 @@
 """
 
 from datetime import date, timedelta
+from lxml import html
 from pathlib import Path
 
 import luigi
+from luigi.contrib.postgres import CopyToTable, PostgresQuery
 from luigi.format import MixedUnicodeBytes
+import pandas as pd
 import requests
 
+from scrabadata import config
 
-RANKING_URL = "https://www.ffsc.fr/classements.exporter.php?class=nat&date={date}"
-AREA_URL = "https://www.ffsc.fr/clubs.php"
-CLUB_URL = "https://www.ffsc.fr/clubs.php?comite={region}"
-DATADIR = Path("data")
+DATADIR = Path(config["main"]["datadir"])
 
 
 class DownloadRanking(luigi.Task):
@@ -26,14 +27,17 @@ class DownloadRanking(luigi.Task):
 
     def output(self):
         date_str = self.date.strftime("%Y%m%d")
-        output_path = DATADIR / "classements" / f"classement_{date_str}.csv"
+        output_path = (
+            DATADIR / "classements_bruts" / f"classement_{date_str}.csv"
+            )
+        output_path.parent.mkdir(exist_ok=True, parents=True)
         return luigi.LocalTarget(output_path, format=MixedUnicodeBytes)
 
     def run(self):
         query_date = self.date
         while True:
             ranking_date_str = query_date.strftime("%Y-%m-%d")
-            url = RANKING_URL.format(date=ranking_date_str)
+            url = config["url"]["ranking"].format(date=ranking_date_str)
             resp = requests.get(url)
             if self.error_message not in resp.content.decode(encoding="LATIN1"):
                 break
