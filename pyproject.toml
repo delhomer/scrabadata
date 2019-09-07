@@ -13,6 +13,8 @@ pandas = "^0.25.0"
 geocoder = "^1.38"
 shapely = "^1.6"
 luigi = "^2.8"
+daiquiri = "^1.6"
+psycopg2 = "^2.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
