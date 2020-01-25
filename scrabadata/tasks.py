@@ -26,12 +26,17 @@ import requests
 
 from scrabadata import config, download
 
+
 DATADIR = Path(config["main"]["datadir"])
 
 
 class CreateSchema(PostgresQuery):
-    """As this class inheritates from PostgresQuery, it must define host,
+    """Create a schema in the database defined through the project configuration
+    file. As an implicit dependency, the database must be created.
+
+    As this class inheritates from PostgresQuery, it must define host,
     database, user, password, schema and table attributes
+
     """
     host = config['database']['host']
     database = config['database']['dbname']
@@ -312,7 +317,7 @@ class ClubsToDB(CopyToTable):
     def requires(self):
         return {
             "schema": CreateSchema(schema="areas"),
-            "clubs": MergeClubs()
+            "clubs": GeocodeClubs()
             }
 
     def rows(self):
