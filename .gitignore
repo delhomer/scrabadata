@@ -1,1 +1,4 @@
 scrabadata/__pycache__/
+scrabadata.egg-info/
+poetry.lock
+config/*.ini
