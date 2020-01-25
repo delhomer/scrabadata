@@ -17,11 +17,13 @@ daiquiri = "^1.6"
 psycopg2 = "^2.8"
 folium = "^0.10.0"
 geopandas = "^0.5.1"
+lxml = "^4.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 flake8 = "^3.6"
 notebook = "^6.0"
+ipython = "^7.11"
 
 [tool.poetry.scripts]
 scraba = "scrabadata.tools.__main__:main"
