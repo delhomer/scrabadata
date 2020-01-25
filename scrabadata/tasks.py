@@ -18,6 +18,7 @@ from datetime import date, timedelta
 from lxml import html
 from pathlib import Path
 
+import fiona
 import geopandas as gpd
 import luigi
 from luigi.contrib.postgres import CopyToTable, PostgresQuery
@@ -308,7 +309,7 @@ class ClubsToDB(CopyToTable):
         ("club_id", "VARCHAR(3)"),
         ("name", "VARCHAR(48)"),
         ("address", "VARCHAR(100)"),
-        ("geometry", "GEOMETRY")
+        ("geometry", "GEOMETRY(Point,4326)")
     ]
 
     @property
@@ -322,10 +323,11 @@ class ClubsToDB(CopyToTable):
             }
 
     def rows(self):
-        with self.input()["clubs"].open('r') as fobj:
-            df = pd.read_csv(fobj)
-            for _, row in df.iterrows():
-                yield row
+        clubs = gpd.read_file(self.input()["clubs"].path)
+        clubs.crs = {'init': 'epsg:4326'}
+        for _, row in clubs.iterrows():
+            row.geometry = "SRID=4326;" + str(row.geometry)
+            yield row
 
 
 class Finalize(luigi.Task):
