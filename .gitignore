@@ -1,8 +1,5 @@
 scrabadata/__pycache__/
 scrabadata.egg-info/
 poetry.lock
-<<<<<<< HEAD
 config/*.ini
-=======
-config/*.ini
->>>>>>> resetdb: create a python script for resetting database
+examples/.ipynb_checkpoints/

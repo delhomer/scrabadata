@@ -18,6 +18,7 @@ from datetime import date, timedelta
 from lxml import html
 from pathlib import Path
 
+import geopandas as gpd
 import luigi
 from luigi.contrib.postgres import CopyToTable, PostgresQuery
 from luigi.format import MixedUnicodeBytes
@@ -283,11 +284,11 @@ class GeocodeClubs(luigi.Task):
         return luigi.LocalTarget(output_path)
 
     def run(self):
-        clubs = pd.read_csv(self.input())
+        clubs = gpd.read_file(self.input().path)
         clubs.loc[:, "geometry"] = clubs["address"].apply(
             lambda x: download.geocode(x)
         )
-        gdf.to_file(self.output().path, driver="GeoJSON")
+        clubs.to_file(self.output().path, driver="GeoJSON")
 
 
 class ClubsToDB(CopyToTable):
