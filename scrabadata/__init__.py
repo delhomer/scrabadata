@@ -10,7 +10,7 @@ import daiquiri.formatter
 
 
 _HERE = Path().absolute()
-_CONFIG_FILE = _HERE / "scrabadata" / "config.ini"
+_CONFIG_FILE = _HERE / "config" / "config.ini"
 
 FORMAT = (
     "%(asctime)s :: %(color)s%(levelname)s :: %(name)s :: %(funcName)s :"
